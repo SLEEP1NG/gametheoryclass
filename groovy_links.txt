@@ -1,0 +1,6 @@
+Reference: http://groovy.codehaus.org/Getting+Started+Guide
+Java differences: http://groovy.codehaus.org/Differences+from+Java
+Unit testing: http://groovy.codehaus.org/Unit+Testing
+
+Archetype to create maven project: http://michaelangela.wordpress.com/2009/12/11/building-groovy-projects-with-maven/
+Eclipse plugin page: http://groovy.codehaus.org/Eclipse+Plugin
