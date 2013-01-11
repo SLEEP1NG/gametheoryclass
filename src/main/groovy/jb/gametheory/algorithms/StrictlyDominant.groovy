@@ -15,13 +15,24 @@ class StrictlyDominant {
 		def result = [] as Set
 		for (i in 0..matrix[0].length-1) {
 			Object[] temp = transformColumnCellsToArray(matrix, i)
-			result << indexForMaxInElementX(temp, 0)
+			result << indexForStrictMaxInElementX(temp, 0)
 		}
-		result
+		onlyAllowOneDominantStrategy(result)
+	}
+
+	/**
+	 * if not exactly one dominant strategy, means there isn't one
+	 * @param result
+	 * @return
+	 */
+	private Collection onlyAllowOneDominantStrategy(Collection result) {
+		if (result.size() > 1 || result.contains(null)) {
+			result = []
+		}
+		return result
 	}
 
 	//TODO support more than 2x2 (remember max?)
-	//TODO support no dominant strategy
 
 	/**
 	 * For each possible row player 1 chooses, returns the index of the cells with the highest overall value
@@ -30,25 +41,32 @@ class StrictlyDominant {
 	 */
 	def findForPlayer2(Object[][] matrix) {
 		def result = [] as Set
-		matrix.each() { result << indexForMaxInElementX(it, 1) }
-		result
+		matrix.each() { result << indexForStrictMaxInElementX(it, 1) }
+		onlyAllowOneDominantStrategy(result)
 	}
 
 	/**
-	 * Returns the element with the highest value.
+	 * Returns the element with the UNIQUE highest value.  If multiple elements share that highest value, return null;
 	 * Assumes non empty array.
 	 * @param row
 	 * @param elementIndex
 	 * @return
 	 */
-	def indexForMaxInElementX(Object[] row, int elementIndex) {
-		int max = 0
+	def indexForStrictMaxInElementX(Object[] row, int elementIndex) {
+		int maxIndex = 0
+		boolean duplicateOnMax = false
 		for (i in 1..row.length - 1) {
-			if (row[i][elementIndex] > row[max][elementIndex]) {
-				max = i
+			if (row[i][elementIndex] == row[maxIndex][elementIndex]) {
+				duplicateOnMax = true
+			} else if (row[i][elementIndex] > row[maxIndex][elementIndex]) {
+				maxIndex = i
+				duplicateOnMax = false
 			}
 		}
-		max
+		if (duplicateOnMax)
+			null
+		else
+			maxIndex
 	}
 
 	/**

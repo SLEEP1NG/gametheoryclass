@@ -13,10 +13,6 @@ class StrictlyDominantTest extends GroovyTestCase {
 	// ----------------------------------------------------------------
 
 	void testPrisonersDilema() {
-		/**
-		 * 1 2
-		 * 3 4 
-		 */
 		Object[][] matrix =
 				[
 					[[-1, -1], [-4, 0]],
@@ -26,15 +22,35 @@ class StrictlyDominantTest extends GroovyTestCase {
 		assertIntArrayEquals([1], strategy.findForPlayer2(matrix))
 	}
 
+	// ----------------------------------------------------------------
+
+	void testNoDominantStrategy() {
+		Object[][] matrix =
+				[
+					[[1, 1], [1, 1]],
+					[[1, 1], [0, 2]]
+				]
+		assertIntArrayEquals([], strategy.findForPlayer1(matrix))
+		assertIntArrayEquals([], strategy.findForPlayer2(matrix))
+	}
+
+	//----------------------------------------------------------------
+
 	def assertIntArrayEquals(expected, actual) {
 		assertArrayEquals(expected as int[], actual as int[])
 	}
 
 	//----------------------------------------------------------------
-	void testIndexForMaxInElementX() {
+	void testIndexForStrictMaxInElementX() {
 		def input = [[-1, -1], [-4, 0]] as Object[]
-		assert 0 == strategy.indexForMaxInElementX(input, 0) : "first coordinate"
-		assert 1 == strategy.indexForMaxInElementX(input, 1) : "second coordinate"
+		assert 0 == strategy.indexForStrictMaxInElementX(input, 0) : "first coordinate"
+		assert 1 == strategy.indexForStrictMaxInElementX(input, 1) : "second coordinate"
+	}
+
+	void testIndexForStrictMaxInElementX_forStrictMax() {
+		def input = [[-1, -1], [-1, 0]] as Object[]
+		assert null == strategy.indexForStrictMaxInElementX(input, 0) : "first coordinate"
+		assert 1 == strategy.indexForStrictMaxInElementX(input, 1) : "second coordinate"
 	}
 	//----------------------------------------------------------------
 	void testTransformColumnCellsToArray() {
@@ -44,10 +60,5 @@ class StrictlyDominantTest extends GroovyTestCase {
 		assertIntArrayEquals([1, 3], strategy.transformColumnCellsToArray(matrix, 1))
 	}
 
-	void testJeanne() {
-		Object[][] matrix =
-				[[0, 1], [2, 3]]
-		matrix.each() { println " ${it}" };
-		matrix.each() { println ( it) };
-	}
+
 }
