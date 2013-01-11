@@ -32,8 +32,6 @@ class StrictlyDominant {
 		return result
 	}
 
-	//TODO support more than 2x2 (remember max?)
-
 	/**
 	 * For each possible row player 1 chooses, returns the index of the cells with the highest overall value
 	 * @param matrix
