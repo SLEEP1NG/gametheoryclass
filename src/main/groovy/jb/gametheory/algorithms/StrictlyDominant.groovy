@@ -13,7 +13,7 @@ class StrictlyDominant {
 	 */
 	def findForPlayer1(Object[][] matrix) {
 		def result = [] as Set
-		for (i in 0..matrix.length-1) {
+		for (i in 0..matrix[0].length-1) {
 			Object[] temp = transformColumnCellsToArray(matrix, i)
 			result << indexForMaxInElementX(temp, 0)
 		}
@@ -22,7 +22,6 @@ class StrictlyDominant {
 
 	//TODO support more than 2x2 (remember max?)
 	//TODO support no dominant strategy
-	//TODO why doesn't closure each work?
 
 	/**
 	 * For each possible row player 1 chooses, returns the index of the cells with the highest overall value
@@ -31,9 +30,7 @@ class StrictlyDominant {
 	 */
 	def findForPlayer2(Object[][] matrix) {
 		def result = [] as Set
-		for (i in 0..matrix[0].length-1) {
-			result << indexForMaxInElementX(matrix[i], 1)
-		}
+		matrix.each() { result << indexForMaxInElementX(it, 1) }
 		result
 	}
 
@@ -63,11 +60,7 @@ class StrictlyDominant {
 	 */
 	def transformColumnCellsToArray(Object[][] matrix, int column) {
 		def result = []
-		for(i in 0..matrix.length-1) {
-			result << matrix[i][column]
-		}
+		matrix.each() { result << it[column] };
 		result
 	}
-
-
 }

@@ -43,4 +43,11 @@ class StrictlyDominantTest extends GroovyTestCase {
 		assertIntArrayEquals([0, 2], strategy.transformColumnCellsToArray(matrix, 0))
 		assertIntArrayEquals([1, 3], strategy.transformColumnCellsToArray(matrix, 1))
 	}
+
+	void testJeanne() {
+		Object[][] matrix =
+				[[0, 1], [2, 3]]
+		matrix.each() { println " ${it}" };
+		matrix.each() { println ( it) };
+	}
 }
