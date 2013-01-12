@@ -22,4 +22,30 @@ class NashEquilibriumTest extends GroovyTestCase {
 		Object[] actual = strategy.findNashEquilibrium(matrix)
 		assertArrayEquals(expected, actual)
 	}
+
+	// ----------------------------------------------------------------
+
+	void testCoinToss() {
+		Object[][] matrix =
+				[
+					[[1, 1], [0, 0]],
+					[[0, 0], [1, 1]]
+				]
+		Object[] expected = ["00", "11"]
+		Object[] actual = strategy.findNashEquilibrium(matrix)
+		assertArrayEquals(expected, actual)
+	}
+
+	// ----------------------------------------------------------------
+
+	void testZeroSum() {
+		Object[][] matrix =
+				[
+					[[1, -1], [-1, 1]],
+					[[-1, 1], [1, -1]]
+				]
+		Object[] expected = []
+		Object[] actual = strategy.findNashEquilibrium(matrix)
+		assertArrayEquals(expected, actual)
+	}
 }
