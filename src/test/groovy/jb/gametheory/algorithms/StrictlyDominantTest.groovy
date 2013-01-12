@@ -16,7 +16,7 @@ class StrictlyDominantTest extends GroovyTestCase {
 		Object[][] matrix =
 				[
 					[[-1, -1], [-4, 0]],
-					[[0, -4], [-3, 3]]
+					[[0, -4], [-3, -3]]
 				]
 		assertIntArrayEquals([1], strategy.findForPlayer1(matrix))
 		assertIntArrayEquals([1], strategy.findForPlayer2(matrix))

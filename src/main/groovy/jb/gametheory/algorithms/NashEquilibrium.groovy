@@ -3,7 +3,7 @@ package jb.gametheory.algorithms
 class NashEquilibrium {
 
 
-	def findNashEquilibrium(Object[][] matrix) {
+	def findNashEquilibriumCoordinates(Object[][] matrix) {
 		def player1Choices = findPlayer1Choices(matrix)
 		def player2Choices = findPlayer2Choices(matrix)
 

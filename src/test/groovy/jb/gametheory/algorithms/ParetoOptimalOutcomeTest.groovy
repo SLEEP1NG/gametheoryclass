@@ -2,13 +2,13 @@ package jb.gametheory.algorithms;
 
 import org.junit.*;
 
-class NashEquilibriumTest extends GroovyTestCase {
+class ParetoOptimalOutcomeTest extends GroovyTestCase {
 
 	private strategy
 
 	// ----------------------------------------------------------------
 	void setUp() {
-		strategy = new NashEquilibrium()
+		strategy = new ParetoOptimalOutcome()
 	}
 	// ----------------------------------------------------------------
 
@@ -18,8 +18,8 @@ class NashEquilibriumTest extends GroovyTestCase {
 					[[-1, -1], [-4, 0]],
 					[[0, -4], [-3, -3]]
 				]
-		Object[] expected = ["11"]
-		Object[] actual = strategy.findNashEquilibriumCoordinates(matrix)
+		Object[] expected = ["00", "01", "10"]
+		Object[] actual = strategy.findParetoCoordinates(matrix)
 		assertArrayEquals(expected, actual)
 	}
 
@@ -32,7 +32,7 @@ class NashEquilibriumTest extends GroovyTestCase {
 					[[0, 0], [1, 1]]
 				]
 		Object[] expected = ["00", "11"]
-		Object[] actual = strategy.findNashEquilibriumCoordinates(matrix)
+		Object[] actual = strategy.findParetoCoordinates(matrix)
 		assertArrayEquals(expected, actual)
 	}
 
@@ -44,8 +44,8 @@ class NashEquilibriumTest extends GroovyTestCase {
 					[[1, -1], [-1, 1]],
 					[[-1, 1], [1, -1]]
 				]
-		Object[] expected = []
-		Object[] actual = strategy.findNashEquilibriumCoordinates(matrix)
+		Object[] expected = ["00", "01", "10", "11"]
+		Object[] actual = strategy.findParetoCoordinates(matrix)
 		assertArrayEquals(expected, actual)
 	}
 }
