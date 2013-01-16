@@ -48,4 +48,17 @@ class NashEquilibriumTest extends GroovyTestCase {
 		Object[] actual = strategy.findNashEquilibriumCoordinates(matrix)
 		assertArrayEquals(expected, actual)
 	}
+	
+	// ----------------------------------------------------------------
+	
+	void testUnbalanced() {
+		Object[][] matrix =
+				[
+					[[2, 2], [0, 2]],
+					[[1,2], [3, 3]]
+				]
+		Object[] expected = ["00", "11"]
+		Object[] actual = strategy.findNashEquilibriumCoordinates(matrix)
+		assertArrayEquals(expected, actual)
+	}
 }

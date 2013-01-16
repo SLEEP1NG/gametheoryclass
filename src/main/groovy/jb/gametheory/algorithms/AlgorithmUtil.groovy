@@ -9,6 +9,21 @@ class AlgorithmUtil {
 	 * @return
 	 */
 	static def indexForStrictMaxInElementX(Object[] row, int elementIndex) {
+		helper_indexForMaxInElementX(row, elementIndex, false)
+	}
+	
+	/**
+	 * Returns the element with the highest value.  If multiple elements share that highest value, return it;
+	 * Assumes non empty array.
+	 * @param row
+	 * @param elementIndex
+	 * @return
+	 */
+	static def indexForMaxInElementX(Object[] row, int elementIndex) {
+		helper_indexForMaxInElementX(row, elementIndex, true)
+	}
+	
+	private static def helper_indexForMaxInElementX(Object[] row, int elementIndex, boolean allowDuplicatesOnMax) {
 		int maxIndex = 0
 		boolean duplicateOnMax = false
 		for (i in 1..row.length - 1) {
@@ -19,7 +34,7 @@ class AlgorithmUtil {
 				duplicateOnMax = false
 			}
 		}
-		if (duplicateOnMax)
+		if (! allowDuplicatesOnMax && duplicateOnMax)
 			null
 		else
 			maxIndex
