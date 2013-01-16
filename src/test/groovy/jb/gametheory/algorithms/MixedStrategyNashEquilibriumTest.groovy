@@ -23,9 +23,9 @@ class MixedStrategyNashEquilibriumTest extends GroovyTestCase {
 		Object[] actual = strategy.find2x2MixedStrategyNashEquilibrium(matrix)
 		assertArrayEquals(expected, actual)
 	}
-	
+
 	// ----------------------------------------------------------------
-	
+
 	void testMatching() {
 		Object[][] matrix =
 				[
@@ -36,9 +36,9 @@ class MixedStrategyNashEquilibriumTest extends GroovyTestCase {
 		Object[] actual = strategy.find2x2MixedStrategyNashEquilibrium(matrix)
 		assertArrayEquals(expected, actual)
 	}
-	
+
 	// ----------------------------------------------------------------
-	
+
 	void testPrisonersDilema() {
 		Object[][] matrix =
 				[
@@ -49,9 +49,9 @@ class MixedStrategyNashEquilibriumTest extends GroovyTestCase {
 		Object[] actual = strategy.find2x2MixedStrategyNashEquilibrium(matrix)
 		assertArrayEquals(expected, actual)
 	}
-	
+
 	// ----------------------------------------------------------------
-	
+
 	void testBattleSexes() {
 		Object[][] matrix =
 				[
@@ -62,4 +62,32 @@ class MixedStrategyNashEquilibriumTest extends GroovyTestCase {
 		Object[] actual = strategy.find2x2MixedStrategyNashEquilibrium(matrix)
 		assertArrayEquals(expected, actual)
 	}
+
+	// ----------------------------------------------------------------
+
+	void testSoccer() {
+		Object[][] matrix =
+				[
+					[[0, 1], [1, 0]],
+					[[1, 0], [0, 1]]
+				]
+		Object[] expected = [[0.5, 0.5], [0.5, 0.5]]
+		Object[] actual = strategy.find2x2MixedStrategyNashEquilibrium(matrix)
+		assertArrayEquals(expected, actual)
+	}
+
+	void testSoccer_weighted() {
+		Object[][] matrix =
+				[
+					[[0, 1], [1, 0]],
+					[[0.75, 0.25], [0, 1]]
+				]
+		Object[] expected = [
+			[0.5714285714, 0.4285714286],
+			[0.4285714286, 0.5714285714]
+		]
+		Object[] actual = strategy.find2x2MixedStrategyNashEquilibrium(matrix)
+		assertArrayEquals(expected, actual)
+	}
+
 }
