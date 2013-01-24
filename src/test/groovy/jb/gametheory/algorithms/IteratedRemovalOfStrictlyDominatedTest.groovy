@@ -8,7 +8,7 @@ class IteratedRemovalOfStrictlyDominatedTest extends GroovyTestCase {
 
 	// ----------------------------------------------------------------
 	void setUp() {
-		strategy = new IteratedRemovalOfStrictlyDominated()
+		strategy = new IteratedRemovalOfDominated()
 	}
 	// ----------------------------------------------------------------
 
@@ -19,7 +19,7 @@ class IteratedRemovalOfStrictlyDominatedTest extends GroovyTestCase {
 					[[1, 1], [1, 1], [5, 0]],
 					[[0, 1], [4, 2], [0, 1]]
 				]
-		Object[] actual = strategy.findPossibilitiesForNash(matrix)
+		Object[] actual = strategy.findPossibilitiesForNashForStronglyDominated(matrix)
 		assertEquals("# rows", 1, actual.length)
 		assertEquals("# cells", 1, actual[0].length)
 		assertIntArrayEquals([4, 2], actual[0][0])
@@ -32,7 +32,7 @@ class IteratedRemovalOfStrictlyDominatedTest extends GroovyTestCase {
 					[[1, 1], [1, 1], [5, 0]],
 					[[0, 1], [4, 1], [0, 0]]
 				]
-		Object[] actual = strategy.findPossibilitiesForNash(matrix)
+		Object[] actual = strategy.findPossibilitiesForNashForStronglyDominated(matrix)
 		assertEquals("# rows", 3, actual.length)
 		assertEquals("# cells", 2, actual[0].length)
 	}
@@ -44,7 +44,7 @@ class IteratedRemovalOfStrictlyDominatedTest extends GroovyTestCase {
 					[[6, 7], [2, 10], [0, 0]],
 					[[5, 0], [1, 1], [2, 4]]
 				]
-		Object[] actual = strategy.findPossibilitiesForNash(matrix)
+		Object[] actual = strategy.findPossibilitiesForNashForStronglyDominated(matrix)
 		assertEquals("# rows", 1, actual.length)
 		assertEquals("# cells", 1, actual[0].length)
 		assertIntArrayEquals([5, 3], actual[0][0])
