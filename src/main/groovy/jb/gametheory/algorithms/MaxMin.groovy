@@ -1,7 +1,8 @@
 package jb.gametheory.algorithms
 
 /**
- * Two player game.  Player 1 wants to maximize payoff given constraint that player 2 wants to minimize player 1's payoff.  And vice versa.
+ * Two player game.  Player 1 wants to minimize payoff given constraint that player 2 wants to maximize player 1's payoff.  And vice versa.
+ * (What's the best I can do given the worst case scenario chosen by my opponent.)
  * @author nyjeanne
  *
  */
